@@ -1,13 +1,16 @@
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
+import MovieDetails from 'components/MovieDetails/MovieDetails';
+import { BackButtonLink } from 'components/Button';
 
-export default function MovieDetails() {
+export default function MovieDetailsPage() {
   const data = useLoaderData();
-
-  console.log(data);
+  const location = useLocation();
+  const backHref = location.state?.from || '/movies';
 
   return (
     <>
-      <h2>Movie Details</h2>
+      <BackButtonLink to={backHref}>Back</BackButtonLink>
+      <MovieDetails data={data} />
       <Outlet />
     </>
   );

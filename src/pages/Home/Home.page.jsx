@@ -2,7 +2,7 @@ import { uniqBy } from 'lodash';
 import TheMovieAPI from 'services/theMovieAPI';
 import { useFetchMovieAPI } from '../../hooks/useFetchMovieAPI';
 import Loader from 'components/Loader';
-import MoviesList from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList';
 import { LoadMoreButton } from './Home.styled';
 
 export default function Home() {

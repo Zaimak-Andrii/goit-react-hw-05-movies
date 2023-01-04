@@ -7,7 +7,7 @@ import TheMovieAPI from '../services/theMovieAPI';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
-const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const MovieDetailsPage = lazy(() => import('pages/MovieDetails'));
 
 export default createBrowserRouter(
   [
@@ -25,7 +25,7 @@ export default createBrowserRouter(
         },
         {
           path: 'movies/:movieId',
-          element: <MovieDetails />,
+          element: <MovieDetailsPage />,
           loader: async ({ params }) => {
             return TheMovieAPI.getMovieDetailsById(params.movieId);
           },
