@@ -26,17 +26,20 @@ export default createBrowserRouter(
         {
           path: 'movies/:movieId',
           element: <MovieDetailsPage />,
-          loader: async ({ params }) => {
-            return TheMovieAPI.getMovieDetailsById(params.movieId);
-          },
+          loader: async ({ params }) =>
+            TheMovieAPI.getMovieDetailsById(params.movieId),
           children: [
             {
               path: 'cast',
               element: <Cast />,
+              loader: async ({ params }) =>
+                TheMovieAPI.getMovieCredits(params.movieId),
             },
             {
               path: 'reviews',
               element: <Reviews />,
+              loader: async ({ params }) =>
+                TheMovieAPI.getMovieReviews(params.movieId),
             },
           ],
         },

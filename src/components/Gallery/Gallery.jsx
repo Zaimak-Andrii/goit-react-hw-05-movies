@@ -33,7 +33,13 @@ export default function Gallery({
 
   return (
     <>
-      {moviesList && <Component list={moviesList} />}
+      {moviesList &&
+        (moviesList.length === 0 ? (
+          // TODO: Зробити окремий компонент
+          <h2>Movies not found</h2>
+        ) : (
+          <Component list={moviesList} />
+        ))}
 
       {isFetching && <Loader mt={3} />}
 

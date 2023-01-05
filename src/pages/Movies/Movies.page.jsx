@@ -7,6 +7,7 @@ import SearchInput from 'components/SearchInput';
 
 export default function Movies() {
   const [findQuery, setFindQuery] = useState('');
+
   const [searchQuery, setSearchQuery] = useSearchParams();
   const query = searchQuery.get('query') ?? '';
 
