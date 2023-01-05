@@ -7,10 +7,17 @@ import {
 } from '@mui/material';
 import { Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    background: {
+      default: '#f5f5f5',
+    },
+  },
+});
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -35,6 +42,7 @@ export const App = () => {
           </Container>
         </Box>
       </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 };

@@ -17,6 +17,7 @@ export default function MovieDetails({ data }) {
     release_date,
     vote_average,
     vote_count,
+    belongs_to_collection,
   } = data;
   const rating = useMemo(
     () => Number((vote_average * 0.5).toFixed(1)),
@@ -26,12 +27,19 @@ export default function MovieDetails({ data }) {
     () => genres.map(genre => genre.name).join(', '),
     [genres]
   );
+  const imageSrc = poster_path ?? belongs_to_collection?.poster_path;
 
   return (
     <Box display="flex" my={3}>
-      <Box minWidth={250} borderRadius={2} overflow="hidden">
+      <Box
+        minWidth={250}
+        maxWidth={250}
+        minHeight={375}
+        borderRadius={2}
+        overflow="hidden"
+      >
         <img
-          src={`${config.urls.theMovies.image.bigPoster}${poster_path}`}
+          src={`${config.urls.theMovies.image.bigPoster}${imageSrc}`}
           width="250"
           alt={title}
         />
