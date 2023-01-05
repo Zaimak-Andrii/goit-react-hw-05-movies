@@ -4,8 +4,11 @@ import { numberWithCommas } from 'utils';
 import { DetailsButtonLink } from './MovieDetails.styled';
 import { MovieDetailsPropTypes } from './MovieDetails.props';
 import config from 'config';
+import { useLocation } from 'react-router-dom';
 
 export default function MovieDetails({ data }) {
+  const location = useLocation();
+  const localtionState = { from: location.state?.from };
   const {
     title,
     tagline,
@@ -73,8 +76,12 @@ export default function MovieDetails({ data }) {
           </Typography>
         </Box>
         <Stack direction="row" spacing={2} mt="auto">
-          <DetailsButtonLink to="cast">Cast</DetailsButtonLink>
-          <DetailsButtonLink to="reviews">Reviews</DetailsButtonLink>
+          <DetailsButtonLink to="cast" state={localtionState}>
+            Cast
+          </DetailsButtonLink>
+          <DetailsButtonLink to="reviews" state={localtionState}>
+            Reviews
+          </DetailsButtonLink>
         </Stack>
       </Box>
     </Box>
